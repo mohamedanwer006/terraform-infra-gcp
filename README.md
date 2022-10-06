@@ -13,7 +13,7 @@ ToDo
 - [x] gs bucket module
 - [x] vm instance module
 - [x] bigquery module
-
+- [ ] Deploy jenkins  and nexus
 
 Access VM via **ssh** through IAP
 ---
