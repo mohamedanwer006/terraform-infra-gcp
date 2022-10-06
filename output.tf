@@ -3,6 +3,6 @@
 #------------------------------------------------------------#
 
 output "buckets_name" {
-    value = module.gs_bucket.*.bucket_url
+  value = module.gs_bucket.*.bucket_url
 }
 

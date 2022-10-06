@@ -8,11 +8,11 @@ ToDo
 
 - [x] main files 
 - [x] Network module
-- [ ] service accounts 
+- [x] service accounts 
 - [x] gke  module
 - [x] gs bucket module
 - [x] vm instance module
-- [ ] bigquery module
+- [x] bigquery module
 
 
 Access VM via **ssh** through IAP
