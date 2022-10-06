@@ -3,7 +3,8 @@
 #------------------------------------------------------------------------------#
 
 resource "google_storage_bucket" "bucket" {
-  name          = "${var.bucket_name}-${uuid()}"
+    
+  name          = "${var.bucket_name}-${random_id.gs_random_id.hex}"
   location      = var.region
   force_destroy = true # force destroy bucket even if it's not empty
 
