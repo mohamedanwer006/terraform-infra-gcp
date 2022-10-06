@@ -17,3 +17,4 @@ variable "subnet_cidr" {
 variable "region" {
   type = string
 }
+

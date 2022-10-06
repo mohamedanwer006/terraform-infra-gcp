@@ -2,6 +2,11 @@
 #                                    Variables                                 #
 #------------------------------------------------------------------------------#
 
+variable "project_id" {
+  type    = string
+  default = "anwer-gcp"
+}
+
 
 #---------------------------#
 #     Network variables     #

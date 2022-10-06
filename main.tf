@@ -35,6 +35,22 @@ module "vm" {
 
 # TODO : GKE module
 
+module "cluster" {
+  source                          = "./modules/gke"
+  cluster_name                    = "vois-cluster"
+  project_id                      = var.project_id
+  network_name                    = module.vpc.vpc_name
+  subnet_name                     = module.vpc.subnet_name
+  region                          = "us-central1"
+  zones                           = ["us-central1-c", "us-central1-f"]
+  machine_type                    = "n1-standard-1"
+  nodes_per_zone                  = 2
+  master_authorized_networks_cidr = "10.0.0.0/24" // allow only from the IAP
+  boot_disk_size                  = 100
+  master_cidr                     = "172.16.0.0/28"
+  service_account_email           = google_service_account.kubernetes_sa.email
+}
+
 # TODO : gs bucket module
 
 # TODO : bigquery module
