@@ -29,3 +29,39 @@ variable "region" {
 }
 
 
+#---------------------------#
+#     vm variables          #
+#---------------------------#
+
+# vm name
+variable "vm_name" {
+  type    = string
+  default = "test-vm"
+}
+
+# vm type
+variable "vm_type" {
+  type    = string
+  default = "e2-micro"
+}
+
+# OS image
+variable "vm_image" {
+  default = "centos-cloud/centos-7"
+  type    = string
+
+}
+
+# VM Zone
+variable "vm_zone" {
+  type    = string
+  default = "us-central1-a"
+}
+
+# Tags
+variable "tags" {
+  type    = set(string)
+  default = ["test-vm"]
+}
+
+
