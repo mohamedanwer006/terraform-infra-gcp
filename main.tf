@@ -53,13 +53,21 @@ module "cluster" {
 #  gs bucket module
 
 module "gs_bucket" {
-    source = "./modules/gs_bucket"
-    count = 3
-    bucket_name = "gs-bucket-${count.index}"
-    region = "us-central1"
-    storage_class = "STANDARD"
-    versioning_enabled = false
+  source             = "./modules/gs_bucket"
+  count              = 3
+  bucket_name        = "gs-bucket-${count.index}"
+  region             = "us-central1"
+  storage_class      = "STANDARD"
+  versioning_enabled = false
 }
 
-# TODO : bigquery module
+# bigquery module
 
+module "bq_dataset" {
+  source                = "./modules/bigquery"
+  count                 = 3
+  dataset_name          = "bq_dataset_${count.index}_"
+  region                = var.region
+  service_account_email = google_service_account.bq_sa.email
+
+}
