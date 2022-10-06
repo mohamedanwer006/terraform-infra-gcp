@@ -7,7 +7,7 @@ ToDo
 ----
 
 - [x] main files 
-- [ ] Network module
+- [x] Network module
 - [ ] service accounts 
 - [ ] gke  module
 - [ ] gs bucket module
