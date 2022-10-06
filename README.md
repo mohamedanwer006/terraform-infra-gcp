@@ -11,7 +11,7 @@ ToDo
 - [ ] service accounts 
 - [ ] gke  module
 - [ ] gs bucket module
-- [ ] vm instance module
+- [x] vm instance module
 - [ ] bigquery module
 
 
