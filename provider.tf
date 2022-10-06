@@ -14,7 +14,7 @@ terraform {
 
 provider "google" {
   # Configuration options
-  project     = "anwer-gcp"
-  region      = "us-central1"
+  project     = var.project_id
+  region      = var.region
   credentials = "/home/mohamed/.config/gcloud/application_default_credentials.json"
 }

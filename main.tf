@@ -33,8 +33,7 @@ module "vm" {
 
 }
 
-# TODO : GKE module
-
+# GKE module
 module "cluster" {
   source                          = "./modules/gke"
   cluster_name                    = "vois-cluster"
@@ -51,7 +50,16 @@ module "cluster" {
   service_account_email           = google_service_account.kubernetes_sa.email
 }
 
-# TODO : gs bucket module
+#  gs bucket module
+
+module "gs_bucket" {
+    source = "./modules/gs_bucket"
+    count = 3
+    bucket_name = "gs-bucket-${count.index}"
+    region = "us-central1"
+    storage_class = "STANDARD"
+    versioning_enabled = false
+}
 
 # TODO : bigquery module
 

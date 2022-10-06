@@ -7,6 +7,12 @@ variable "project_id" {
   default = "anwer-gcp"
 }
 
+variable "region" {
+  type        = string
+  default     = "us-central1"
+  description = "default region us-central1"
+}
+
 
 #---------------------------#
 #     Network variables     #
@@ -27,11 +33,6 @@ variable "subnet_cidr" {
   default = "10.0.0.0/24"
 }
 
-variable "region" {
-  type        = string
-  default     = "us-central1"
-  description = "default region us-central1"
-}
 
 
 #---------------------------#

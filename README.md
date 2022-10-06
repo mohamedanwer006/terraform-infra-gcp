@@ -10,7 +10,7 @@ ToDo
 - [x] Network module
 - [ ] service accounts 
 - [x] gke  module
-- [ ] gs bucket module
+- [x] gs bucket module
 - [x] vm instance module
 - [ ] bigquery module
 
