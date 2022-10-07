@@ -2,7 +2,7 @@
 # kind: Ingress
 # metadata:
 #   name: ingress
-#   namespace: jenkins-ns
+#   namespace: shared-services
 # spec:
 #   rules:
 #   - http:

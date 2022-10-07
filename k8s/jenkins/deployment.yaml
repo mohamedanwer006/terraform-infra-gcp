@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jenkins-server
-  namespace: jenkins-ns
+  namespace: shared-services
 spec:
   replicas: 1
   selector:
