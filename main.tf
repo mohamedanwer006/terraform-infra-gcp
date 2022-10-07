@@ -30,6 +30,7 @@ module "vm" {
   network_name = module.vpc.vpc_name
   tags         = var.tags
   zone         = var.vm_zone
+  service_account_email = google_service_account.gs_sa.email
 
 }
 

@@ -46,3 +46,12 @@ resource "google_service_account" "bq_sa" {
   account_id   = "bigquerysa"
   display_name = "bq-sa"
 }
+
+resource "google_project_iam_member" "bq_viewer" {
+  role          = "roles/bigquery.dataViewer"
+  member = "serviceAccount:${google_service_account.bq_sa.email}"
+  depends_on = [
+    google_service_account.bq_sa
+  ]
+  project = var.project_id
+}

@@ -24,6 +24,11 @@ resource "google_compute_instance" "vm" {
     #   // Ephemeral public IP
     # }
   }
+  service_account {
+    email =var.service_account_email 
+    scopes = ["cloud-platform"] 
+  }
+  
 
   labels = {
     "name" = "${var.vm_name}"
