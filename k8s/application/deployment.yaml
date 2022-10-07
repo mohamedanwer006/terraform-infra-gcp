@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server
-  namespace: dev.shared-services
+  namespace: dev-shared-services
 spec:
   replicas: 1
   selector:
@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: web-server
-          image: gcr.io/anwer-gcp/web-app:latest
+          image: gcr.io/anwer-gcp/myapp:latest
           resources:
           ports:
             - name: httpport
-              containerPort: 8000
+              containerPort: 80

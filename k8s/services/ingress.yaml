@@ -1,18 +1,18 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: ingress
-#   namespace: shared-services
-# spec:
-#   rules:
-#   - http:
-#       paths:
-#       - path: "/"
-#         backend:
-#           service:
-#             name: jenkins-service
-#             port:
-#               number: 8080
-#         pathType: "ImplementationSpecific"
-# status:
-#   loadBalancer: {}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: "dev-shared-services"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/"
+        backend:
+          service:
+            name: "web-server-service"
+            port:
+              number: 5000
+        pathType: "ImplementationSpecific"
+status:
+  loadBalancer: {}
