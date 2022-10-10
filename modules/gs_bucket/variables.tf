@@ -21,3 +21,10 @@ variable "versioning_enabled" {
     default = false
 }
 
+variable "resource_count" {
+  type= number
+  default = 1
+  description = "Number of instances of this resource, default=1"
+}
+
+

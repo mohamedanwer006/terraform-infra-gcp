@@ -3,7 +3,8 @@
 #------------------------------------------------------------------------------#
 
 resource "google_compute_instance" "vm" {
-  name         = var.vm_name
+  count = var.resource_count
+  name         = "${var.vm_name}${count.index}"
   machine_type = var.vm_type
   zone         = var.zone
   tags = var.tags
@@ -31,14 +32,14 @@ resource "google_compute_instance" "vm" {
   
 
   labels = {
-    "name" = "${var.vm_name}"
+    "name" = "${var.vm_name}${count.index}"
   }
 
 #  Use startup script to tinyproxy as a reverse proxy to allow access to gke cluster
-  metadata_startup_script = <<EOF
-  #!/bin/bash
-  yum install -y tinyproxy
-  echo "Allow localhost"| tee -a /etc/tinyproxy/tinyproxy.conf
-  systemctl restart tinyproxy
-  EOF
+  # metadata_startup_script = <<EOF
+  # #!/bin/bash
+  # yum install -y tinyproxy
+  # echo "Allow localhost"| tee -a /etc/tinyproxy/tinyproxy.conf
+  # systemctl restart tinyproxy
+  # EOF
 }

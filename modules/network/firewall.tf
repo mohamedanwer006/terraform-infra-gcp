@@ -13,10 +13,10 @@ resource "google_compute_firewall" "fw_allow_ssh" {
     ports    = ["22"]
   }
   # HTTP/s
-  allow {
-    protocol = "tcp"
-    ports    = ["80", "443"]
-  }
+  # allow {
+  #   protocol = "tcp"
+  #   ports    = ["80", "443"]
+  # }
 
   # Allow traffic from google IAP 
   source_ranges = ["35.235.240.0/20"] // allow only from the IAP

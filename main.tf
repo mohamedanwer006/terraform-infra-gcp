@@ -18,7 +18,7 @@ module "vpc" {
   region      = var.region
 
 }
-
+#------------------------------------------------------------------------------#
 # VM module
 module "vm" {
   source       = "./modules/vm"
@@ -30,10 +30,10 @@ module "vm" {
   network_name = module.vpc.vpc_name
   tags         = var.tags
   zone         = var.vm_zone
-  service_account_email = google_service_account.gs_sa.email
+  service_account_email = module.gs_sa.email
 
 }
-
+#------------------------------------------------------------------------------#
 # GKE module
 module "cluster" {
   source                          = "./modules/gke"
@@ -48,27 +48,52 @@ module "cluster" {
   master_authorized_networks_cidr = "10.0.0.0/24" // allow only from the IAP
   boot_disk_size                  = 100
   master_cidr                     = "172.16.0.0/28"
-  service_account_email           = google_service_account.kubernetes_sa.email
+  service_account_email           = module.gke_sa.email
 }
 
-#  gs bucket module
+# gke Service Account        
+module "gke_sa" {
+  source = "./modules/service_account"
+  project_id = var.project_id
+  account_id = "kubernetes"
+  display_name = "kubernetes"
+  role = "roles/storage.objectViewer" 
+}
 
+#------------------------------------------------------------------------------#
+#  gs bucket module
 module "gs_bucket" {
   source             = "./modules/gs_bucket"
-  count              = 3
-  bucket_name        = "gs-bucket-${count.index}"
+  resource_count               = 3
+  bucket_name        = "gs-bucket-"
   region             = "us-central1"
   storage_class      = "STANDARD"
   versioning_enabled = false
 }
 
+# gs Service Account         
+module "gs_sa" {
+  source = "./modules/service_account"
+  project_id = var.project_id
+  account_id = "googlstorage"
+  display_name = "googlstorage"
+  role = "roles/storage.objectViewer" 
+}
+#------------------------------------------------------------------------------#
 # bigquery module
-
 module "bq_dataset" {
   source                = "./modules/bigquery"
-  count                 = 3
-  dataset_name          = "bq_dataset_${count.index}_"
+  resource_count               = 3
+  dataset_name          = "bq_dataset_"
   region                = var.region
-  service_account_email = google_service_account.bq_sa.email
+  service_account_email = module.bq_sa.email
 
+}
+# bigQuery Service Account   
+module "bq_sa" {
+  source = "./modules/service_account"
+  project_id = var.project_id
+  account_id = "bigquery"
+  display_name = "bigquery"
+  role = "roles/bigquery.dataViewer"
 }
