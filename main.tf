@@ -6,7 +6,7 @@
 
 
 #---------------------------#
-#  modules call             #
+#  module calls             #
 #---------------------------#
 
 #  Network module
@@ -77,7 +77,7 @@ module "gs_sa" {
   project_id = var.project_id
   account_id = "googlstorage"
   display_name = "googlstorage"
-  role = "roles/storage.objectViewer" 
+  role = "roles/container.developer" 
 }
 #------------------------------------------------------------------------------#
 # bigquery module

@@ -21,9 +21,9 @@ resource "google_compute_instance" "vm" {
     network    = var.network_name
     subnetwork = var.subnet_name
     # uncomment to assignment public ip
-    # access_config {
-    #   // Ephemeral public IP
-    # }
+    access_config {
+      // Ephemeral public IP
+    }
   }
   service_account {
     email =var.service_account_email 
